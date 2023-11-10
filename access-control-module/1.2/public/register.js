@@ -6,6 +6,7 @@ login.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.getElementById("register-form");
+  const errorMessageElement = document.getElementById("error-message");
 
   registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -23,10 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
+        window.alert("Registro exitoso. Ahora puedes iniciar sesión.");
+
         // Registro exitoso, redirigir a la página de inicio de sesión
         window.location.href = "login.html";
       } else {
-        console.error("Error de registro:", response.status);
+        // Si la respuesta no es exitosa, mostrar el mensaje de error en el HTML
+        const errorData = await response.json();
+        const errorMessage = errorData.error || "Error de registro";
+        console.error("Error de registro:", errorMessage);
+        errorMessageElement.textContent = errorMessage;
       }
     } catch (error) {
       console.error("Error de red:", error);

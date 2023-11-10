@@ -14,8 +14,6 @@ async function loginHandler(req, res) {
       [userId]
     );
 
-    console.log("Resultado de la llamada al procedimiento almacenado:", rows);
-
     if (!rows || !Array.isArray(rows) || rows.length === 0) {
       console.error("Usuario no encontrado o credenciales incorrectas");
       return res.status(401).json({ error: "Credenciales incorrectas" });
@@ -28,7 +26,6 @@ async function loginHandler(req, res) {
       return res.status(401).json({ error: "Credenciales incorrectas" });
     }
 
-    // Contraseña válida, puedes generar una clave de sesión y realizar otras acciones de inicio de sesión aquí
     const sessionKey = await generateSessionKey();
     await connection.execute("CALL `usp-create-user-session`(?, ?)", [
       storedUserId,
@@ -49,7 +46,7 @@ async function loginHandler(req, res) {
     }
   } catch (error) {
     console.error("Error de inicio de sesión:", error);
-    res.status(500).json({ error: "Error de inicio de sesión" });
+    res.status(500).json({ error: "credenciales incorrectas" });
   } finally {
     connection.end();
   }

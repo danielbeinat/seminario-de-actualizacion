@@ -137,8 +137,8 @@ CREATE TABLE `groups_members` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 TRUNCATE `groups_members`;
-INSERT INTO `groups_members` (`user_id`, `group_id`) VALUES
-(38,  3);
+INSERT INTO `groups_members` (`user_id`, `group_id`) VALUES (38,3),(2,3),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(9,3),(10,3),(11,3),(12,3),(1,1);
+
 
 DROP TABLE IF EXISTS `user_session`;
 CREATE TABLE `user_session` (
@@ -163,7 +163,9 @@ CREATE TABLE `users` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
+TRUNCATE `users`;
 
+INSERT INTO `users` VALUES (1,'daniel','$2b$10$VPcpyNiWWbdHVIr2qWeHw.ipswbjPXSjXx4yqFLUrAVv3a7X44grW'),(2,'roberto','$2b$10$Pj3cAEq6gcq8UpDIitk.sO14BDhixhAn1V.fABwOcz64LfDTxfI/W'),(3,'ramiro','$2b$10$mqc7AlcGYTZLGpWznmax0Ow1N83TcqgKNYa58o7Q2ekm.9uEyCuXq'),(4,'lautaro','$2b$10$aQYQ7T7DelR6d7M4mv6e1ON7l3G4cS3YVz1VVmYVX5yultZCYoxK2'),(5,'marcos','$2b$10$rHw/SQqBJgAkaU2qfixudurYjrznntmDgghC/JretcPipwGLin3qS'),(6,'juana','$2b$10$hHqs48hT7vhr/QxB3oW4OezwoNJ2FUmiW1FXoytKW.w70ccwQyKnW'),(7,'mariana','$2b$10$whSB7dmnXZAuXVjcR8QI8OHuMTiE4GM4I/EtvQJmSGiYkUgqN8w9W'),(8,'estefania','$2b$10$ZjvmVqa3LTD1tdsCDmjaoezLDQF2FrFJIjwjfd6WiBn22qlIcOmpq'),(9,'luciano','$2b$10$nxJc7RIk/gTDLPjgnUEhFelZ67u2ncDRyuE9DPdkR27B/PsfZVyla'),(10,'micaela','$2b$10$IKoVwF.JCfZzAq.48qaRmuc92b./6O.dnV0Q53s873leXPJJZuD6G'),(11,'tatiana','$2b$10$dP5I9G4.s3Hy8MCAzAvMmutMGflxHsgIBx6bM9b9l7kexiyrjlPWy'),(12,'emiliano','$2b$10$CSV9L3JCd7XcjQyg1603cOQrcCoPR0ZV5UDpNFi7C15sW.OsxcikO');
 
 
 

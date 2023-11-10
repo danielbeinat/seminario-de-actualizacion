@@ -7,7 +7,6 @@ async function registerHandler(req, res) {
   const connection = await mysql.createConnection(dbConfig);
 
   try {
-    // Verifica si el nombre de usuario ya está en uso
     const [existingUser] = await connection.execute(
       "SELECT id FROM users WHERE name = ?",
       [name]
@@ -23,7 +22,6 @@ async function registerHandler(req, res) {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    // Llama al procedimiento almacenado para registrar al nuevo usuario
     await connection.execute("CALL `usp-create-user`(?, ?)", [
       name,
       hashedPassword,

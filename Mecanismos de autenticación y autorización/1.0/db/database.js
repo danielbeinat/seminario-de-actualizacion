@@ -8,7 +8,6 @@ const dbConfig = {
   database: process.env.DB_NAME,
 };
 
-// Función para establecer y exportar una conexión a la base de datos
 async function connectToDatabase() {
   try {
     const connection = await mysql.createConnection(dbConfig);

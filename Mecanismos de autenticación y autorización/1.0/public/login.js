@@ -6,6 +6,7 @@ register.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const loginForm = document.getElementById("login-form");
+  const errorMessageElement = document.getElementById("error-message");
 
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -38,7 +39,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           window.location.href = "dashboard.html";
         }
       } else {
-        console.error("Error de inicio de sesión:", response.status);
+        // Si la respuesta no es exitosa, mostrar el mensaje de error en el HTML
+        const errorData = await response.json();
+        const errorMessage = errorData.error || "Credenciales inválidas";
+
+        console.error("Error de inicio de sesión:", errorMessage);
+        errorMessageElement.textContent = errorMessage;
       }
     } catch (error) {
       console.error("Error de red:", error);

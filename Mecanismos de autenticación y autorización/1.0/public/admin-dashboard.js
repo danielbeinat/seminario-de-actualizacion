@@ -2,9 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutButton = document.getElementById("logout-button");
 
   logoutButton.addEventListener("click", async () => {
-    // Obtener la clave de sesión almacenada (si la tienes)
-    console.log("Botón de cierre de sesión clickeado");
-
     const sessionKey = localStorage.getItem("sessionKey");
 
     // Enviar una solicitud de cierre de sesión al servidor
@@ -21,10 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Borrar la clave de sesión almacenada
         localStorage.removeItem("sessionKey");
 
-        // Redirigir al usuario a la página de inicio de sesión
         window.location.href = "login.html";
       } else {
-        // Manejar errores de cierre de sesión
         console.error("Error al cerrar sesión:", response.status);
       }
     } catch (error) {
